@@ -25,10 +25,10 @@ before_script:
   - source venv/bin/activate
   - pip install -r requirements.txt
 
-test:
-  only: [tags]
-  script:
-    - python setup.py test
+#test:
+#  only: [tags]
+#  script:
+#    - python setup.py test
 
 run:
   before_script:
