@@ -49,13 +49,13 @@ class ARS():
         for k, v in self.config[profile].items():
             if k.upper() in variables:
                 print(f"export {k.upper()}={v}")
-        if not os.environ.get("AWS_REGION"):
+        if not os.environ.get("AWS_DEFAULT_REGION"):
             self.set_aws_region()
 
     def set_aws_region(self):
-        region = prompt('AWS_REGION Not Set. Choose Region: ', completer=FuzzyWordCompleter(REGIONS))
+        region = prompt('AWS_DEFAULT_REGION Not Set. Choose Region: ', completer=FuzzyWordCompleter(REGIONS))
         if self.validate(region, REGIONS):
-            print(f"export AWS_REGION={region}")
+            print(f"export AWS_DEFAULT_REGION={region}")
 
     def validate(self, raw, expected):
         if raw in expected:
