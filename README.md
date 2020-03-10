@@ -1,6 +1,6 @@
 # aws_role_switcher
 
-This is a CLI application makes it easier to switch roles using auto completion from parsing your aws config/credential file and setting `"AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID", "AWS_SESSION_TOKEN"` environment variables if present.
+This is a CLI application makes it easier to switch roles using auto completion from parsing your aws config/credential file and setting `"AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID", "AWS_SESSION_TOKEN", "AWS_SECURITY_TOKEN"` environment variables if present.
 
 This script does not support MFA roles, and designed to help cycle through profiles set manually, or as output from an SSO script like: https://github.com/Nike-Inc/gimme-aws-creds
 ## Installation
@@ -31,21 +31,28 @@ Example config file:
 aws_access_key_id = REDACTED
 aws_secret_access_key = redacted
 aws_session_token = default
+aws_security_token = default
 
 [testing-administrator]
 aws_access_key_id = REDACTED
 aws_secret_access_key = redacted
 aws_session_token = testing
+aws_security_token = testing
+
 
 [staging-administrator]
 aws_access_key_id = REDACTED
 aws_secret_access_key = redacted
 aws_session_token = staging
+aws_security_token = staging
+
 
 [production-administrator]
 aws_access_key_id = REDACTED
 aws_secret_access_key = redacted
 aws_session_token = production
+aws_security_token = production
+
 ```
 
 Example Usage:
