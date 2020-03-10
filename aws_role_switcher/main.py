@@ -45,7 +45,7 @@ class ARS():
             self.set_aws_environment_variables(profile)
 
     def set_aws_environment_variables(self, profile):
-        variables = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID", "AWS_SESSION_TOKEN"]
+        variables = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID", "AWS_SESSION_TOKEN", "AWS_SECURITY_TOKEN"]
         for k, v in self.config[profile].items():
             if k.upper() in variables:
                 print(f"export {k.upper()}={v}")
