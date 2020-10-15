@@ -46,8 +46,14 @@ class ARS:
         self.__init__()
         profile_arg, region_arg = self.parse_arguments(sys_args)
         self.set_aws_vars(profile_arg)
-        if not os.environ.get("AWS_DEFAULT_REGION"):
+        current_region = os.environ.get("AWS_DEFAULT_REGION", None)
+        if current_region:
+            if region_arg:
+                if region_arg not in [current_region, current_region.replace("-","")]:
+                    self.set_aws_region(region_arg)
+        else:
             self.set_aws_region(region_arg)
+
 
     def set_aws_vars(self, arg):
         validator = Validator.from_callable(
