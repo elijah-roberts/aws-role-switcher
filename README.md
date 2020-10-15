@@ -24,6 +24,10 @@ You can set the following environmental variables:
 
 `ars` to start prompt. TAB or start typing to start auto completion list. TAB or use arrows to cycle through list, and enter to select.
 
+### Pass profile and region positional variables (Optional)
+using a format of `<script> <profile_arg> <region_arg>` the utility will start the prompt process with the passed in args
+i.e 
+`ars admin uswest2`
 Example config file:
 
 ```
