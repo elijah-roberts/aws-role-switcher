@@ -8,7 +8,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='aws-role-switcher',
-    version='1.1.0',
+    version='1.2.0',
     py_modules=['aws-role-switcher'],
     author="Elijah Roberts",
     author_email="elijah@elijahjamesroberts.com",
