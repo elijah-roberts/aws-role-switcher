@@ -8,7 +8,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='aws-role-switcher',
-    version='1.3.0',
+    version='1.4.0',
     py_modules=['aws-role-switcher'],
     author="Elijah Roberts",
     author_email="elijah@elijahjamesroberts.com",
@@ -16,7 +16,7 @@ setup(
     license="MIT",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    download_url="https://github.com/elijah-roberts/aws-role-switcher/archive/1.0.1.tar.gz",
+    download_url="https://github.com/elijah-roberts/aws-role-switcher/archive/1.4.0.tar.gz",
     keywords=['AWS', 'ROLE', 'GIT', 'PROFILE', 'AUTOCOMPLETE'],
     packages=find_packages(),
     scripts=['bin/aws-role-switcher.sh', 'bin/aws-role-switcher'],
