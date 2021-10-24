@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
+from . import __version__
 import configparser
 import os
+import sys
 from pathlib import Path
 
 from prompt_toolkit import prompt
@@ -36,6 +38,7 @@ class ARS:
         self.config = configparser.ConfigParser()
         default_path = os.path.join(Path.home(), '.aws/credentials')
         extended_path = os.environ.get('AWS_PROFILE_SWITCHER_PATH')
+        self.version = f"{__version__}"
         if extended_path:
             path = extended_path
         else:
@@ -44,15 +47,18 @@ class ARS:
 
     def run(self, sys_args):
         self.__init__()
-        profile_arg, region_arg = self.parse_arguments(sys_args)
-        self.set_aws_vars(profile_arg)
+        args = self.parse_arguments(sys_args)
+        if args.version:
+            print(f"Version: {self.version}")
+            sys.exit(0)
+        self.set_aws_vars(args.profile)
         current_region = os.environ.get("AWS_DEFAULT_REGION", None)
         if current_region:
-            if region_arg:
-                if region_arg not in [current_region, current_region.replace("-","")]:
-                    self.set_aws_region(region_arg)
+            if args.region:
+                if args.region not in [current_region, current_region.replace("-","")]:
+                    self.set_aws_region(args.region)
         else:
-            self.set_aws_region(region_arg)
+            self.set_aws_region(args.region)
 
 
     def set_aws_vars(self, arg):
@@ -92,11 +98,15 @@ class ARS:
         else:
             return False
 
+
+
     @staticmethod
     def parse_arguments(sys_args):
-        if len(sys_args) <= 1:
-            return "", ""
-        elif len(sys_args) == 2:
-            return sys_args[1], ""
-        else:
-            return sys_args[1], sys_args[2]
+        import argparse
+        parser = argparse.ArgumentParser()
+        parser.add_argument("profile", nargs='?', default="", help="Valid profile name found in your `.aws/credentials` file")
+        parser.add_argument("region", nargs='?', default="", help="valid AWS Region")
+        parser.add_argument("-v", "--version", help="Provide the version of CLI",
+                            action="store_true")
+        args = parser.parse_args()
+        return args
