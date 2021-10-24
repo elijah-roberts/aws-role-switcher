@@ -63,6 +63,9 @@ Example Usage:
 
 ![AWS Role Switcher Demo](examples/aws-switch-roles.gif)
 
+Updated Example (1.5.0):
+
+![AWS Role Switcher Demo](examples/ars-1.5.0.gif)
 
  ## Development
 
