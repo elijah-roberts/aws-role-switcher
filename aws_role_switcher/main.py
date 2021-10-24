@@ -60,11 +60,14 @@ class ARS:
             self.profile_validator,
             error_message='Not a valid profile name',
             move_cursor_to_end=True)
-        profile = prompt('Enter Profile: ',
-                         default=arg,
-                         completer=FuzzyWordCompleter(self.config.sections()),
-                         complete_while_typing=True,
-                         validator=validator)
+        if self.profile_validator(arg):
+            profile = arg
+        else:
+            profile = prompt('Enter Profile: ',
+                            default=arg,
+                            completer=FuzzyWordCompleter(self.config.sections()),
+                            complete_while_typing=True,
+                            validator=validator)
 
         for k, v in self.config[profile].items():
             if k.upper() in AWS_VARS:
