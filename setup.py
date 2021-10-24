@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+from aws_role_switcher import __version__
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -8,7 +9,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='aws-role-switcher',
-    version='1.4.0',
+    version=__version__,
     py_modules=['aws-role-switcher'],
     author="Elijah Roberts",
     author_email="elijah@elijahjamesroberts.com",

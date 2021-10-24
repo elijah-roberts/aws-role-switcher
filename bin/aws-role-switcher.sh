@@ -1,2 +1,8 @@
 #!/bin/sh
-eval "$(aws-role-switcher "$@")"
+if [[ $* == *-h* ]]; then
+  aws-role-switcher $@
+elif [[ $* == *-v* ]]; then
+    aws-role-switcher $@
+else
+  eval "$(aws-role-switcher "$@")"
+fi
